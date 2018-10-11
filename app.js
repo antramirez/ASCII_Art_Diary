@@ -15,7 +15,6 @@ let artworkStrings = [
 |O.o:.o8o|_ /\n
 |.o.8o.O.|\n
  \.o:o.o/`, tags: ['snack', 'notmybestwork']}, {title: "buddy", date: "2018-10-31", artwork: "testing", tags: ['halloween', 'squad', 'fashion']}];
- artworkStrings.reverse();
 
 // set up handlebars
 app.set('view engine', 'hbs');
@@ -37,10 +36,35 @@ app.use((req, res, next) => {
 
 // homepage
 app.get('/', (req, res) => {
+  let qString = req.query.tag;
+  let context = '';
   // get context to array of artwork objects to be used as variable
   // in homepage.hbs (each artwork object will be its own li element)
-  const context = {artWork: artworkStrings};
+  if (!qString) {
+    // if no filter is chosen, reverse artwork array and
+    // let every image be part of what to display
+    artworkStrings.reverse();
+    context = {artWork: artworkStrings};
+  }
+  else {
+    // if there is a query string for tag, filter the array
+    // so that artwork with only the specified tag shows up
+    context = {artWork: artworkStrings.filter(art => art.tags.includes(qString))};
+  }
+  // render homepage with the appropriate artwork
   res.render('homepage', context);
+});
+
+app.get('/add', (req, res) => {
+  // add page has a form so that new pieces of art work can be added to array - each input has name that corresponds to artwork object properties
+  res.send('<form method="post" action="/add"><input type="text" name="title" value="title"><input type="text" name="dt" value="dt"><input type="text" name="artwork" value="artwork"><input type="text" name="tags" value="tags"><input type="submit" value="add artwork"></form>');
+});
+
+app.post('/add', (req, res) => {
+  // add new pieces of art work to array
+  artworkStrings.push({title: req.body.title, date: req.body.dt, artwork: req.body.artwork, tags: req.body.tags});
+  // redirect back to homepage
+  res.redirect('/');
 });
 
 // connect on port 3000
