@@ -1,0 +1,11 @@
+<ul>
+{{#each artWork as |a|}}
+<li>
+  <h4>{{a.date}} {{a.title}}</h4>
+  <pre>{{a.artwork}}</pre>
+  tags: {{#each a.tags as |tag|}}
+    <a>{{tag}}</a>
+    {{/each}}
+</li>
+{{/each}}
+</ul>
