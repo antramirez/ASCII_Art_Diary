@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 // array of artwork objects to be displayed in reverse order
-let artworkStrings = [
+const artworkStrings = [
   {title: "washington sq arch", date: "2018-09-29", artwork:
   `  _______________
   |~|_________|~|
@@ -27,7 +27,7 @@ let artworkStrings = [
 |.o.8o.O.|
  \\.o:o.o/`, tags: ['snack', 'notmybestwork']},
  {title: "buddy", date: "2018-10-31", artwork:
-  "      /  /\\   |---.\   \n      |__|/__ |---,\\\n      |  `   |=    `\n      |      /|\n      |  .--' |\n      |   |\\  |\n      |   | \\ |\n     /|   | | |\n    \\/    |  \\|\n___ /_____\\___|\\____", tags: ['halloween', 'squad', 'fashion']}];
+  "      /  /\\   |---.   \n      |__|/__ |---,\\\n      |  `   |=    `\n      |      /|\n      |  .--' |\n      |   |\\  |\n      |   | \\ |\n     /|   | | |\n    \\/    |  \\|\n___ /_____\\___|\\____", tags: ['halloween', 'squad', 'fashion']}];
  // reverse array so most recent art displays first
  artworkStrings.reverse();
 
@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 // homepage
 app.get('/', (req, res) => {
   // get query string from url
-  let qString = req.query.tag;
+  const qString = req.query.tag;
   let context = '';
 
   // get context to array of artwork objects to be used as variable
