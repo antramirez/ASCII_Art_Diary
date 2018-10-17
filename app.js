@@ -43,16 +43,16 @@ app.use(express.urlencoded({extended: false}));
 
 // custom middleware to log request method, path, query string, and body
 app.use((req, res, next) => {
-  console.log(req.method, req.path);
-  console.log('query string:\n', req.query, '\n');
-  console.log('body:\n', req.body, '\n');
+  console.log(req.method, req.path, '\n=====');
+  console.log('req.query:', req.query);
+  console.log('req.body:', req.body, '\n');
   next();
 });
 
 // homepage
 app.get('/', (req, res) => {
   // get query string from url
-  const qString = req.query.tag;
+  const qString = req.query.filter;
   let context = '';
 
   // get context to array of artwork objects to be used as variable

@@ -1,6 +1,6 @@
 <h3>artworks</h3>
 <form action="/" method="GET">
-  Filter by a tag: <input type="text" name="tag" value="">
+  Filter by a tag: <input type="text" name="tag">
   <input type="submit" value="Filter">
 </form>
 <ul>
@@ -9,7 +9,7 @@
   <h4>{{a.date}} {{a.title}}</h4>
   <pre>{{a.artwork}}</pre>
   tags: {{#each a.tags as |tag|}}
-    <a href='/?tag={{tag}}'>{{tag}}</a>
+    <a href='/?filter={{tag}}'>{{tag}}</a>
     {{/each}}
 </li>
 {{/each}}

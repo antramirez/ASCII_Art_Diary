@@ -26,13 +26,13 @@ h4 {
   margin: 5px 0px;
 }
 
-
 a {
   font-size: 18px;
   color:blue;
   web-kit-transition: 1s color;
   transition: 1s color;
 }
+
 a:hover {
   color:yellow;
 }
@@ -47,31 +47,37 @@ li {
   font-size: 1.3em;
   margin-bottom: 50px;
 }
+
 pre {
   margin: 10px 0px;
   line-height: 1.06em;
 }
+
 input {
-  /* display:block; */
   width: 150px;
   margin: 5px 0px;
 }
+
 input:focus {
   background-color: rgb(50, 255, 80);
 }
+
 input[type=submit] {
   width: 100px;
   color: white;
   background-color: rgba(80, 80, 80, .5);
 }
+
 textarea {
   margin: 5px 0px 2px 0px;
 }
+
 footer {
   width:100%;
   border-top: 1px solid aliceblue;
   padding-top: 15px;
 }
+
 footer a:hover {
   color: red;
 }
