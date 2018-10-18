@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 // homepage
 app.get('/', (req, res) => {
   // get query string from url
-  const qString = req.query.filter;
+  const qString = req.query.tag;
   let context = '';
 
   // get context to array of artwork objects to be used as variable
